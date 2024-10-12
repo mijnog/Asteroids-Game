@@ -21,12 +21,16 @@ def main():
     player = Player(x,y,20)
 
     running = True
+    #Check if app needs to quit
     while (running):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-
-        screen.fill(color=(0, 10, 0))
+        
+        #Update player on the screen
+        player.update(dt)
+        #Render the screen at 60FPS
+        screen.fill(color=(0, 5, 5))
         player.draw(screen)
         pygame.display.flip()
         delta = clock.tick(60)
