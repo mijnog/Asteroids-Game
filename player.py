@@ -1,6 +1,9 @@
-from circleshape import *
+#player.py
+import pygame
+from circleshape import CircleShape
 from constants import *
 class Player(CircleShape):
+
     def __init__(self, x, y, PLAYER_RADIUS):
         # Pass x, y, and PLAYER_RADIUS to the CircleShape constructor
         super().__init__(x, y, PLAYER_RADIUS)
