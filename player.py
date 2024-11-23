@@ -12,7 +12,7 @@ class Player(CircleShape):
         self.y = int(y)
         self.rotation = 0
         self.timer = 0
-        self.velocity = pygame.Vector2(0, 0)  # Corrected the class name for Vector2
+        self.velocity = pygame.Vector2(0, 0)
         self.angularMomentum = 0
         print(f"Player class initialized at position ({self.x}, {self.y}) with radius {PLAYER_RADIUS}")
 
@@ -42,6 +42,11 @@ class Player(CircleShape):
 
         # Apply velocity to position
         self.position += self.velocity * dt
+
+        # Apply friction
+        self.velocity *= PLAYER_FRICTION  # Gradually reduce velocity
+        if self.velocity.length() < 0.1:  # Stop micro-movements
+            self.velocity = pygame.Vector2(0, 0)
 
         self.timer -= dt
 
